@@ -3,12 +3,18 @@
 //los metodos estaticos son aquellos que se pueden llamar sin instanciar la clase
 //El servicio interactua con el modelo
 
+const { where } = require('sequelize')
 const UserModel = require('./user.model')
 
 class UserServices {
 
     static async findAll() {
-        return await UserModel.findAll()//La magia del findAll proviene del sequelize
+        return await UserModel.findAll(//La magia del findAll proviene del sequelize
+        {
+            where:{
+                status: 'available',    
+            }
+        })
     }
     
     static async findOne(id) {
