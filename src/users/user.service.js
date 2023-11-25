@@ -7,18 +7,29 @@ const UserModel = require('./user.model')
 
 class UserServices {
 
-   /* static async findAll(){ 
+    static async findAll() {
         return await UserModel.findAll()//La magia del findAll proviene del sequelize
     }
-    static async finOne (){
-        return await UserModel.finOne({
-                where:{
-                    status:'available'
-                }
+    
+    static async findOne(id) {
+        return await UserModel.findOne({
+            where: {
+                status: 'available',
+                id
+            }
         })
-    }*/
-    static async create(data){
+    }
+
+    static async create(data) {
         return await UserModel.create(data) //La magia del create proviene del sequelize
+    }
+    
+    static async update(user, { name, email }) {
+        return await user.update({ name, email })
+    }
+
+    static async delete(user){
+        return await user.update({status : 'disabled'})
     }
 }
 module.exports = UserServices;
