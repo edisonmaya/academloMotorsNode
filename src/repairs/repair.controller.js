@@ -65,7 +65,7 @@ exports.update = async (req, res) => {
 exports.deleteRepair = async (req, res) => {
     try {
         const repair = await RepairServices.findOne(req.params.id);
-        if (repair === null) return res.status(404).json({ message: `User with Id ${req.params.id} not valid` });
+        if (repair === null) return res.status(404).json({ message: `User with Id ${req.params.id} not valid or Status is completed` });
         if (repair !== null) {
             await RepairServices.delete(repair)
             return res.status(204).json(null);

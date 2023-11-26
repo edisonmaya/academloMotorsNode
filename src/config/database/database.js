@@ -7,9 +7,9 @@ const sequelize = new Sequelize(envs.DB_URI, {
 });
 
 //autenticacion de la BD
-const autenticated = async() => {
+const autenticated = async () => {
     try {
-        
+
         await sequelize.authenticate()//Se usa este metodo proveniente del sequelize para autenticar con la BD
         console.log('Connection has been Established successfully... ');
     } catch (error) {
@@ -19,7 +19,7 @@ const autenticated = async() => {
 
 
 //Sincronizacion de la BD
-const syncUp = async() => {
+const syncUp = async () => {
     try {
         //{force:true} permite forzar sincronizar los cambios en el modelo pero BORRA TOOODAS LAS TABLAS Y DATOS EN ELLAS solo usarse en desarrollo no en producción 
         await sequelize.sync()//Se usa este metodo proveniente del sequelize para sincronizar con la BD
@@ -32,4 +32,5 @@ const syncUp = async() => {
 module.exports = {
     sequelize,
     autenticated,
-    syncUp}; 
+    syncUp
+}; 

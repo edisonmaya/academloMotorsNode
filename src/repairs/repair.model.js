@@ -1,26 +1,26 @@
-const {DataTypes} = require('sequelize')
-const {sequelize} = require('../config/database/database')
+const { DataTypes } = require('sequelize')
+const { sequelize } = require('../config/database/database')
 
-const RepairModel = sequelize.define('Repairs',{
+const RepairModel = sequelize.define('Repairs', {
     //Se define los atributos en la entidad
-    id:{
-        primaryKey:true,
+    id: {
+        primaryKey: true,
         autoIncrement: true,
-        type:DataTypes.INTEGER,
-        allowNull:false
+        type: DataTypes.INTEGER,
+        allowNull: false
     },
-    date:{
-        type:DataTypes.DATE,
-        allowNull : true
+    date: {
+        type: DataTypes.DATE,
+        allowNull: true
     },
-    status:{
+    status: {
         type: DataTypes.ENUM('pending', 'completed', 'cancelled'),
-        defaultValue:'pending',
-        allowNull:false,
+        defaultValue: 'pending',
+        allowNull: false,
     },
-    userId:{
-        type:DataTypes.INTEGER,
-        allowNull:true
+    userId: {
+        type: DataTypes.INTEGER,
+        allowNull: true
     }
 })
 module.exports = RepairModel;

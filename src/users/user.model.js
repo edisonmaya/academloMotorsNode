@@ -1,35 +1,36 @@
-const {DataTypes} = require('sequelize')
-const {sequelize} = require('./../config/database/database')
+const { DataTypes } = require('sequelize')
+const { sequelize } = require('./../config/database/database')
 
-const UserModel = sequelize.define('Users',{
+const UserModel = sequelize.define('Users', {
     //Se define los atributos en la entidad
-    id:{
-        primaryKey:true,
+    id: {
+        primaryKey: true,
         autoIncrement: true,
-        type:DataTypes.INTEGER,
-        allowNull:false
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique: true
     },
-    name:{
+    name: {
         type: DataTypes.STRING,
-        allowNull:false,
+        allowNull: false,
     },
-    email:{
+    email: {
         type: DataTypes.STRING,
-        unique:true,
-        allowNull:false,
+        unique: true,
+        allowNull: false,
     },
-    password:{
-        type:DataTypes.STRING,
-        allowNull:false,
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
-    role:{
-        type:DataTypes.ENUM('client','employee'),
-        allowNull:false,
+    role: {
+        type: DataTypes.ENUM('client', 'employee'),
+        allowNull: false,
     },
-    status:{
+    status: {
         type: DataTypes.ENUM('available', 'disabled'),
-        defaultValue:'available',
-        allowNull:false,
+        defaultValue: 'available',
+        allowNull: false,
     }
 })
 module.exports = UserModel;

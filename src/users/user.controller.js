@@ -39,7 +39,7 @@ exports.create = async (req, res) => {
         return res.status(500).json({
             status: 'fail',
             message: 'Something went very wrong!',
-            error
+            error: error.errors[0].message
         })
     }
 }

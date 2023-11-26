@@ -10,13 +10,13 @@ class RepairServices {
 
     static async findAll() {
         return await RepairModel.findAll(//La magia del findAll proviene del sequelize
-        {
-            where:{
-                status: 'pending',    
-            }
-        })
+            {
+                where: {
+                    status: 'pending',
+                }
+            })
     }
-    
+
     static async findOne(id) {
         return await RepairModel.findOne({
             where: {
@@ -29,13 +29,13 @@ class RepairServices {
     static async create(data) {
         return await RepairModel.create(data) //La magia del create proviene del sequelize
     }
-    
+
     static async update(repair) {
-        return await repair.update({status : 'completed'})
+        return await repair.update({ status: 'completed' })
     }
 
-    static async delete(repair){
-        return await repair.update({status : 'cancelled'})
+    static async delete(repair) {
+        return await repair.update({ status: 'cancelled' })
     }
 }
 module.exports = RepairServices;

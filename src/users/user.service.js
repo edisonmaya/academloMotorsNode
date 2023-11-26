@@ -10,13 +10,13 @@ class UserServices {
 
     static async findAll() {
         return await UserModel.findAll(//La magia del findAll proviene del sequelize
-        {
-            where:{
-                status: 'available',    
-            }
-        })
+            {
+                where: {
+                    status: 'available',
+                }
+            })
     }
-    
+
     static async findOne(id) {
         return await UserModel.findOne({
             where: {
@@ -29,13 +29,13 @@ class UserServices {
     static async create(data) {
         return await UserModel.create(data) //La magia del create proviene del sequelize
     }
-    
+
     static async update(user, { name, email }) {
         return await user.update({ name, email })
     }
 
-    static async delete(user){
-        return await user.update({status : 'disabled'})
+    static async delete(user) {
+        return await user.update({ status: 'disabled' })
     }
 }
 module.exports = UserServices;
